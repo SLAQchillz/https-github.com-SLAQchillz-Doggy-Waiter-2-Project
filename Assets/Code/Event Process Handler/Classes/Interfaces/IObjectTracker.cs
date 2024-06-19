@@ -3,7 +3,8 @@ using UnityEngine;
 
 public interface IObjectTracker
 {
-    List<GameObject> MyObjectList { get; }
+    public List<GameObject> MyObjectList { get; }
 
     void AddObjectToList(GameObject NewObject);
+    List<GameObject> GetObjectList();
 }

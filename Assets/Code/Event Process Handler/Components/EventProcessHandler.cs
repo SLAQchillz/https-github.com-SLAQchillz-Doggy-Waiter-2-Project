@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EventProcessHandler : MonoBehaviour
 { 
-    public List<LinearEventProcess> StartupEventProcessList;
+    public List<LinearEventProcess> EventProcessList;
     public bool isEventProcessStarted { get; private set; } = false;
     public bool isCurrentEventComplete { get; private set; } = false;
     private bool isAborted = false;
@@ -31,7 +31,7 @@ public class EventProcessHandler : MonoBehaviour
     {
         try
         {
-            foreach (var startupEventProcess in StartupEventProcessList)
+            foreach (var startupEventProcess in EventProcessList)
             {
                 if (isAborted) yield break;
 

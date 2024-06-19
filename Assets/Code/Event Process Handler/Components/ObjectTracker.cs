@@ -12,4 +12,11 @@ public class ObjectTracker : MonoBehaviour, IObjectTracker
             MyObjectList.Add(NewObject);
         }
     }
+
+    public void RemoveObjectFromList(GameObject obj)
+    {
+        if (MyObjectList.Contains(obj)) MyObjectList.Remove(obj);
+    }
+
+    public List<GameObject> GetObjectList() { return MyObjectList; }
 }

@@ -10,9 +10,12 @@ public class ContextHandler : MonoBehaviour
     public UnityEvent OnHoldBegun;
     public UnityEvent OnContextCanceled;
 
+    private bool isRefusingNewContext = false;
+
     public void ProcessContext(InputActionContextData context)
     {
-        if (handler.isEventProcessStarted == true && context.actionType == InputActionInteractionType.HoldCanceled)
+        if (isRefusingNewContext) { return; }
+        else if (handler.isEventProcessStarted == true && context.actionType == InputActionInteractionType.HoldCanceled)
         {
             OnContextCanceled?.Invoke();
         }
@@ -34,5 +37,11 @@ public class ContextHandler : MonoBehaviour
     public void ClearContext()
     {
         currentContext = null;
+    }
+
+    public void BeginRefusingContext()
+    {
+        isRefusingNewContext = true;
+        ClearContext();
     }
 }
